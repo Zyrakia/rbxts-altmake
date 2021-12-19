@@ -1,0 +1,39 @@
+{
+    "name": "@rbxts/altmake",
+    "description": "Alternative to @rbxts/make to increase Typescript speed.",
+    "version": "0.0.0",
+    "main": "out/init.lua",
+    "license": "MIT",
+    "scripts": {
+        "build": "rbxtsc",
+        "watch": "rbxtsc -w",
+        "prepublishOnly": "yarn run build",
+        "test": "rbxtsc --type=game && rojo build -o ./test.rbxlx && run-in-roblox --place ./test.rbxlx --script ./out/test-runner.server.lua"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zyrakia/altmake"
+    },
+    "bugs": {
+        "url": "https://github.com/zyrakia/altmake/issues"
+    },
+    "types": "out/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "roblox",
+        "roblox-ts",
+        "rbxts",
+        "make",
+        "instance",
+        "create",
+        "new"
+    ],
+    "devDependencies": {
+        "@rbxts/compiler-types": "^1.2.7-types.0",
+        "@rbxts/services": "^1.2.0",
+        "@rbxts/testez": "^0.3.1-ts.7",
+        "@rbxts/types": "^1.0.551"
+    }
+}

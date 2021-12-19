@@ -1,0 +1,9 @@
+out/test-runner.server.d.ts
+out/test-runner.server.lua
+out/__tests__
+out/tsconfig.tsbuildinfo
+src
+include
+default.project.json
+tsconfig.json
+*.drawio
