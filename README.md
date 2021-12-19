@@ -12,7 +12,7 @@ Like in `@rbxts/make`, all properties are applied, then children, then finally t
 const part = Make('Part', {
 	Parent: Workspace,
 	Name: "Look at me, I'm a Part!",
-    Touched: (hit) => print(`Get away from me ${hit.Parent ? hit.Parent : hit}!`)
+    	Touched: (hit) => print(`Get away from me ${hit.Parent ? hit.Parent : hit}!`)
 	Children: Make('Part'),
 });
 ```
