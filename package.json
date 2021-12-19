@@ -1,7 +1,7 @@
 {
     "name": "@rbxts/altmake",
     "description": "Alternative to @rbxts/make to increase Typescript speed.",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "main": "out/init.lua",
     "license": "MIT",
     "scripts": {
