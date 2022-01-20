@@ -1,12 +1,12 @@
 # Altmake
 
-An alternative to `@rbxts/make` which removes children rebuilding to try to get a bit of a Typescript speedup, since it's painfully slow to use, at least for me.
-I also added the ability to add a single child without turning it into an array.
-Overall it's only marginally slower at runtime, like microseconds speaking, and I like using it more so, use it if you want.
+An alternative to `@rbxts/make` which removes children rebuilding to try to get a bit of a Typescript speedup.
+All credits to the author of `@rbxts/make` ([@Validark](https://github.com/Validark)), it's a clever package and a great utility, and there is no reason to switch if you need the children
+rebuilding aspect.
 
-This package also has a `Modify` function, which let's you adjust properties of an instance all at once.
-The `Make` function basically just creates an instance, passes it to the `Modify` function and then returns it.
-Like in `@rbxts/make`, all properties are applied, then children, then finally the parent.
+There is some merit to use this package instead, such as the `Modify` function, which lets you modify an existing instance instead of creating a new one, which can be pretty handy, and letting you pass a single instance instead of an array as the children property if you wish.
+
+Note that the `Modify` function should not be used to modify like one or two properties since it will most likely present a slowdown because of all of the things it does besides `instance.X = Y`.
 
 # Example
 
@@ -16,5 +16,12 @@ const part = Make('Part', {
 	Name: "Look at me, I'm a Part!",
     	Touched: (hit) => print(`Get away from me ${hit.Parent ? hit.Parent : hit}!`)
 	Children: Make('Part'),
+});
+```
+
+```ts
+Modify('Lighting', {
+	Name: 'Not Lighting',
+	Ambient: Color3.fromRGB(255, 0, 0),
 });
 ```
