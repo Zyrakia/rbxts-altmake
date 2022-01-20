@@ -1,5 +1,5 @@
-import { Workspace } from "@rbxts/services";
-import { Make } from "index";
+import { Lighting, Workspace } from '@rbxts/services';
+import { Make, Modify } from 'index';
 
 export = () => {
 	it('should be able to create an instance', () => {
@@ -40,5 +40,18 @@ export = () => {
 		instance.Parent = undefined;
 		expect(deparented).to.equal(true);
 		instance.Destroy();
+	});
+
+	it('should be able to modify existing instances', () => {
+		const ambient = Lighting.Ambient;
+
+		const newAmbient = Color3.fromRGB(255, 0, 0);
+		Modify(Lighting, {
+			Name: 'Not Lighting',
+			Ambient: newAmbient,
+		});
+
+		expect(Lighting.Name).to.equal('Not Lighting');
+		expect(Lighting.Ambient).to.equal(newAmbient);
 	});
 };
