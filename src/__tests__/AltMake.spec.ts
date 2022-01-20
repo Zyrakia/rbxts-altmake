@@ -1,5 +1,5 @@
-import { Workspace } from '@rbxts/services';
-import { Make } from 'index';
+import { Workspace } from "@rbxts/services";
+import { Make } from "index";
 
 export = () => {
 	it('should be able to create an instance', () => {
