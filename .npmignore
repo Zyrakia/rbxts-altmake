@@ -7,3 +7,4 @@ include
 default.project.json
 tsconfig.json
 *.drawio
+*.rbxlx
