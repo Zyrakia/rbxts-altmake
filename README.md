@@ -20,7 +20,7 @@ const part = Make('Part', {
 ```
 
 ```ts
-Modify('Lighting', {
+Modify(Lighting, {
 	Name: 'Not Lighting',
 	Ambient: Color3.fromRGB(255, 0, 0),
 });
