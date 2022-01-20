@@ -14,6 +14,10 @@ export type Events<T extends Instance> = {
  * This applies the properties to the instance, including events
  * and then moves on to applying the children, and finally the
  * parent of the instance.
+ * 
+ * Note that this does NOT clear previous children if the
+ * children property is specified, rather it will parent all
+ * of the children to the instance.
  *
  * @param instance The instance to modify.
  * @param props The properties to apply.
