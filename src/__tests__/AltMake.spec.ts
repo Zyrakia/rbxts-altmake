@@ -1,5 +1,5 @@
 import { Lighting, Workspace } from '@rbxts/services';
-import { Make, Modify } from 'index';
+import { Clone, Make, Modify } from 'index';
 
 export = () => {
 	it('should be able to create an instance', () => {
@@ -43,8 +43,6 @@ export = () => {
 	});
 
 	it('should be able to modify existing instances', () => {
-		const ambient = Lighting.Ambient;
-
 		const newAmbient = Color3.fromRGB(255, 0, 0);
 		Modify(Lighting, {
 			Name: 'Not Lighting',
@@ -53,5 +51,15 @@ export = () => {
 
 		expect(Lighting.Name).to.equal('Not Lighting');
 		expect(Lighting.Ambient).to.equal(newAmbient);
+	});
+
+	it('should be able to clone existing instances', () => {
+		const part = Make('Part');
+		const clone = Clone(part, {
+			Color: new Color3(0, 0, 0),
+		});
+
+		expect(part).to.never.equal(clone);
+		expect(clone.Color).to.equal(new Color3(0, 0, 0));
 	});
 };

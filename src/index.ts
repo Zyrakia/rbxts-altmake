@@ -14,9 +14,9 @@ export type Events<T extends Instance> = {
  * This applies the properties to the instance, including events
  * and then moves on to applying the children, and finally the
  * parent of the instance.
- * 
- * Note that this does NOT clear previous children, 
- * rather it will only parent all of the children 
+ *
+ * Note that this does NOT clear previous children,
+ * rather it will only parent all of the children
  * to the instance if any were specified.
  *
  * @param instance The instance to modify.
@@ -24,6 +24,8 @@ export type Events<T extends Instance> = {
  * @returns The instance passed in.
  */
 export function Modify<T extends Instance>(instance: T, props: Partial<Properties<T> & Events<T>>) {
+	if (props === {}) return instance;
+
 	const parent = props.Parent;
 	const children = props.Children;
 
@@ -63,4 +65,32 @@ export function Make<T extends keyof CreatableInstances>(
 ) {
 	const instance = new Instance(className);
 	return Modify(instance, props);
+}
+
+/**
+ * Clones an instance and applies the specified properties to the new
+ * instance. By default, roblox-ts types `.Clone()` as always returning
+ * an instance, but there is a tiny chance that the instance which is
+ * being cloned has `Archivable` set to false, which means cloning it
+ * will return undefined (most notably, player characters). To account for
+ * this, this function will, by default, set `Archivable` to true. If
+ * manually disabled, the typings for this function will change, indicating
+ * a possible undefined return.
+ *
+ * @param instance The instance to clone.
+ * @param props The properties to apply.
+ * @param ensureArchivable Whether to set archivable to true automatically, defaults to true.
+ * @returns The cloned instance.
+ */
+export function Clone<T extends Instance, E extends boolean = true>(
+	instance: T,
+	props: Partial<Properties<T> & Events<T>> = {},
+	ensureArchivable?: E,
+): E extends true ? T : T | undefined {
+	if (ensureArchivable ?? true) instance.Archivable = true;
+
+	const clone = instance.Clone();
+	if (!clone) return undefined as any;
+
+	return Modify(clone, props);
 }
