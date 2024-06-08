@@ -12,10 +12,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/zyrakia/altmake"
+		"url": "https://github.com/zyrakia/rbxts-altmake"
 	},
 	"bugs": {
-		"url": "https://github.com/zyrakia/altmake/issues"
+		"url": "https://github.com/zyrakia/rbxts-altmake/issues"
 	},
 	"types": "out/index.d.ts",
 	"publishConfig": {
